@@ -1,0 +1,38 @@
+Zadanie 1
+poczytaj o typach danych, jakie są długościpól w poszczególnych typach danych
+zbadaj w środowisku eclipse lub ideone ->ideone.com co się stanie kiedy
+do typu danych String przypiszesz
+1. same liczby 
+2. same litery 
+3. znaki na klawiaturze inne niż liczby i litery
+4. wymieszasz liczby litery i znaki na klawiaturze
+do typu danych double przypiszesz
+1. same liczby 
+2. same litery 
+3. znaki na klawiaturze inne niż liczby i litery
+4. wymieszasz liczby litery i znaki na klawiaturze
+do typu danych int przypiszesz
+1. same liczby 
+2. same litery 
+3. znaki na klawiaturze inne niż liczby i litery
+4. wymieszasz liczby litery i znaki na klawiaturze
+do typu danych date przypiszesz
+1. same liczby 
+2. same litery 
+3. znaki na klawiaturze inne niż liczby i litery
+4. wymieszasz liczby litery i znaki na klawiaturze
+do typu danych long przypiszesz
+1. same liczby 
+2. same litery 
+3. znaki na klawiaturze inne niż liczby i litery
+4. wymieszasz liczby litery i znaki na klawiaturze
+Za co odpowiadają powysze typy danych?
+
+Zadanie 2
+Co to jest 
+-klasa
+-metoda
+-pole klasy
+-konstruktor
+-Jakie znasz konstruktory?
+-Z czego składa się klasa?
