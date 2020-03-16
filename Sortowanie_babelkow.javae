@@ -1,0 +1,39 @@
+package sort; 
+import java.lang.*;
+import java.io.*;
+
+class Sortowanie 
+{
+	public static void main(String [] Args)
+	{
+		int tablica[] = {9, 5, 11, 8, 12, 33, 23, 45,55 };
+		
+		int i, j, temp; //inicjalizacja zmiennych 
+		
+		System.out.println("Nasza tablica: ");
+		
+		for(i = 0; i < tablica.length; i++) 
+			System.out.println(tablica[i] + " "); 
+		System.out.println();
+		
+		for(i = 0; i< tablica.length -1; i++)
+		{
+			for(j = 0; j < tablica.length -1; j++)
+			{
+				if(tablica[j] < tablica[j+1])
+				{
+					//tutaj zaczyna się mechanizm zamiany miejscami wartości w tablicach
+					temp = tablica[j];
+					tablica[j] = tablica[j+1];
+					tablica[j+1] = temp;
+					
+				}
+			}
+		}
+		System.out.println();
+		System.out.println("Nasza posortowana tablica"+ " ");
+		for(i = 0; i < tablica.length; i++) 
+			System.out.println(tablica[i] + " "); 
+		
+	}
+}
