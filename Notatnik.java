@@ -6,7 +6,6 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.io.*;
 import java.util.Scanner;
-import java.io.PrintWriter;
 
 
 class Notatnik extends JFrame{
@@ -28,23 +27,26 @@ class Notatnik extends JFrame{
 	{
 		ramka = new JFrame("Notatnik");
 		plik = new JMenu("Plik");
-		edycja = new JMenu("edycja");
+		edycja = new JMenu("Edycja");
 		menu = new JMenu("menu");
-		pomoc = new JMenu("pomoc");
+		pomoc = new JMenu("Pomoc");
 		
 		nowyPlik = new JMenuItem("Nowy");
-		otworz = new JMenuItem("Otwóż");
+		otworz = new JMenuItem("Otwórz");
 		zapisz = new JMenuItem("Zapisz");
 		zamknij = new JMenuItem("Zamknij");
 		cofnij = new JMenuItem("Cofnij  ctrl+Z");
 		zaznaczWszystko = new JMenuItem("Zaznacz wszystko  ctrl+A");
 		wklej = new JMenuItem("Wklej ctrl+V");
-				
+		
+		poleTextowe = new JTextArea();
+		wstazka = new JMenuBar();
+		fileChooser = new JFileChooser();
+		
 		ramka.setLayout(new BorderLayout());
 		ramka.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		ramka.add(poleTextowe);
-		//wstazka.add()
 		plik.add(otworz); 
 		plik.add(nowyPlik);
 		plik.add(zapisz);
@@ -99,38 +101,34 @@ class Notatnik extends JFrame{
 	}
 	
 
-	 class SaveListener implements ActionListener{
-		public void actionPerformer(ActionEvent e) {
-			if(JFileChooser.APPROVE_OPTION == fileChooser.showSaveDialog(ramka)) {
-				File plik = fileChooser.getSelectedFile();
+	class SaveListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if (JFileChooser.APPROVE_OPTION == fileChooser.showSaveDialog(ramka)) {
+				File file = fileChooser.getSelectedFile();
 				PrintWriter out = null;
-				
 				try {
-					out = new PrintWriter(plik);
+					out = new PrintWriter(file);
 					String output = poleTextowe.getText();
 					System.out.println(output);
 					out.println(output);
-				}
-				catch(Exception ex) {
+				} catch (Exception ex) {
 					ex.printStackTrace();
-				}
-				finally {
-					try 
-					{
+				} finally {
+					try {
 						out.flush();
-					}catch(Exception ex1)
-					{
-						
-					}
+						} catch(Exception ex1) 
+						{
+							
+						}
 					try {
 						out.close();
-					} catch(Exception ex1) {
+						} catch(Exception ex1) {
+							
+						}
 				}
 			}
 		}
 	}
-
-}
 		class NewListener implements ActionListener{
 			public void actionPerformed(ActionEvent e) {
 				poleTextowe.setText("");
