@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-class TicTac extends JFrame implements ItemListener, ActionListener{
+class  TicTac extends JFrame implements ItemListener, ActionListener{
 	int i, j, ii, jj, x, y, taknie;
 	int a[][] = { {10, 1, 2, 3, 11},
 				  {10, 1, 4, 7, 11},
@@ -24,9 +24,11 @@ class TicTac extends JFrame implements ItemListener, ActionListener{
 					  {10, 7, 8, 9, 11}};
 	boolean stan, typ, ustaw; 
 	
+	Checkbox c1, c2;
+	
 	JButton b[] = new JButton[9];
 	JButton reset;		
-	Icon ikona1, ikona2, ikona3, ikona4;
+	Icon ikona1, ikona2, ikona3, ikona4, icon;
 	
 	public void ekranGlowny() {
 		x = 10; y = 10; j = 0;
@@ -119,6 +121,140 @@ class TicTac extends JFrame implements ItemListener, ActionListener{
 			  }
 		  }
 		  
-			  
-		  }
+	TicTac(){
+		super("Kółko krzyżyk");
+		
+		CheckboxGroup cbg = new CheckboxGroup();
+		c1 = new Checkbox("vs komputer");
+		c2 = new Checkbox("vs człowiek");
+		c1.setBounds(120,80,100,40);
+		c2.setBounds(120,150,100,40);
+		
+		add(c1);
+		add(c2);
+		c1.addItemListener(this);
+		c2.addItemListener(this);
+		
+		stan = true;
+		typ = true;
+		ustaw = true;
+		
+		ikona1 = new ImageIcon("ikona1.png");
+		ikona2 = new ImageIcon("ikona2.png");
+		ikona3 = new ImageIcon("ikona3.png");
+		ikona4 = new ImageIcon("ikona4.png");
+		
+		setLayout(null);
+		setSize(400, 450);
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+	}		  
+	
+	public void itemStateChanged(ItemEvent e) {
+		if(c1.getState())
+		{
+			typ = false;
+		}
+		else if (c2.getState()) {
+			typ = true; 
+	}
+	remove(c1); 
+	remove(c2);
+	repaint(0,0,400, 450);
+	ekranGlowny();
+}
 
+public void actionPerformed(ActionEvent e)
+{
+	if(typ == true) //logika dla dwóch osób
+	{
+		if(e.getSource() == reset){
+			for(i=0;i<=8; i++) {
+				b[i].setIcon(null);
+	}
+	}
+else {
+	for(i=0;i<=8;i++) {
+	if(e.getSource() == b[i]) {
+		if(b[i].getIcon() == null)
+		{
+			if(stan == true) {
+				icon = ikona2;
+				stan = false;
+			}
+			else 
+			{
+				icon = ikona1;
+				stan = true;
+			}
+			b[i].setIcon(icon);
+		}
+	}	
+	}
+}
+}
+else if (typ == false) // logika dla gry z komputerem
+{
+	if(e.getSource() == reset){
+		for(i=0;i<=8; i++)
+		{
+			b[i].setIcon(null);
+		}
+		for(i=0; i<=7; i++)
+		for(j=0;j<=4;j++)
+			a[i][j] = akopia[i][j];
+	}
+	else {
+		for(i=0; i<=8; i++) {
+			if(e.getSource() == b[i])
+			{
+				if(b[i].getIcon() == null)
+				{
+					b[i].setIcon(ikona1);
+					if(b[4].getIcon() == null)
+					{
+						b[4].setIcon(ikona2);
+						this.sprawdz(5);
+					}
+					else
+					{
+						this.logika(i);
+				}
+			}
+		}
+	}
+}
+}
+	
+for(i = 0; i<=7; i++)
+{
+	Icon ikona11 = b[(a[i][1]-1)].getIcon();
+	Icon ikona22 = b[(a[i][2]-1)].getIcon();
+	Icon ikona33 = b[(a[i][3]-1)].getIcon();
+	
+		if((ikona11 == ikona22)&&(ikona22 == ikona33)&&(ikona11 != null))
+		{
+			if(ikona11 == ikona1) {
+				b[(a[i][1]-1)].setIcon(ikona3);
+				b[(a[i][2]-1)].setIcon(ikona3);
+				b[(a[i][3]-1)].setIcon(ikona3);
+				JOptionPane.showMessageDialog(TicTac.this, "Wygrałeś, kliknij Reset");
+				break;
+			}
+			else if(ikona11 == ikona2) {
+				b[(a[i][1]-1)].setIcon(ikona4);
+				b[(a[i][2]-1)].setIcon(ikona4);
+				b[(a[i][3]-1)].setIcon(ikona4);
+				JOptionPane.showMessageDialog(TicTac.this, "Przegrałeś, kliknij Reset");
+				break;
+
+			}
+		}
+	}
+}
+	
+	
+  public static void main(String[] args) {
+    new TicTac();
+  }
+}
