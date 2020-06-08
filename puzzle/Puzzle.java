@@ -10,6 +10,19 @@ import javax.swing.JLabel;
 class Puzzle extends JFrame implements ActionListener{
 	JButton but1, but2, but3, but4, but5, but6, but7, but8, but9, but10, but11;
 	Icon ikona;
+
+	
+	Icon przyk  = new ImageIcon(glowna1.png);
+	Icon ikona1 = new ImageIcon(1.png);
+	Icon ikona2 = new ImageIcon(2.png);
+	Icon ikona3 = new ImageIcon(3.png);
+	Icon ikona4 = new ImageIcon(4.png);
+	Icon ikona5 = new ImageIcon(5.png);
+	Icon ikona6 = new ImageIcon(6.png);
+	Icon ikona7 = new ImageIcon(7.png);
+	Icon ikona8 = new ImageIcon(8.png);
+	Icon ikona9 = new ImageIcon(9.png);
+
 	
 	Puzzle(){
 		
@@ -176,5 +189,45 @@ class Puzzle extends JFrame implements ActionListener{
 			but9.setIcon(ikona);
 		}
 	}
+
+	if(e.getSouce == but10){
+	Icon i1 = but10.getIcon()
+	if(i1 == przyk)
+	{
+		but10.setIcon(przyk);
+		but1.setIcon(ikona1);
+		but2.setIcon(ikona2);
+		but3.setIcon(ikona3);
+		but4.setIcon(ikona4);
+		but5.setIcon(ikona5);
+		but6.setIcon(ikona6);
+		but7.setIcon(ikona7);
+		but8.setIcon(ikona8);
+		but9.setIcon(ikona9);
+		ikona = but9.getIcon();
+		but11.setIcon()
 	}
 }
+
+ 	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
