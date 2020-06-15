@@ -1,30 +1,34 @@
-package puzzle;
+package puzz;
 
+import java.awt.*;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-class Puzzle extends JFrame implements ActionListener{
+class Puzz extends JFrame implements ActionListener{
 	JButton but1, but2, but3, but4, but5, but6, but7, but8, but9, but10, but11;
 	Icon ikona;
 
-	
-	Icon przyk  = new ImageIcon(glowna1.png);
-	Icon ikona1 = new ImageIcon(1.png);
-	Icon ikona2 = new ImageIcon(2.png);
-	Icon ikona3 = new ImageIcon(3.png);
-	Icon ikona4 = new ImageIcon(4.png);
-	Icon ikona5 = new ImageIcon(5.png);
-	Icon ikona6 = new ImageIcon(6.png);
-	Icon ikona7 = new ImageIcon(7.png);
-	Icon ikona8 = new ImageIcon(8.png);
-	Icon ikona9 = new ImageIcon(9.png);
+	Icon ikona0 = new ImageIcon("src/konczyna.png");
+	Icon przyk  = new ImageIcon("src/glowny1.png");
+	Icon ikona1 = new ImageIcon("src/1.png");
+	Icon ikona2 = new ImageIcon("src/2.png");
+	Icon ikona3 = new ImageIcon("src/3.png");
+	Icon ikona4 = new ImageIcon("src/4.png");
+	Icon ikona5 = new ImageIcon("src/5.png");
+	Icon ikona6 = new ImageIcon("src/6.png");
+	Icon ikona7 = new ImageIcon("src/7.png");
+	Icon ikona8 = new ImageIcon("src/8.png");
+	Icon ikona9 = new ImageIcon("src/9.png");
 
 	
-	Puzzle(){
+	Puzz(){
 		
 		but1  = new JButton(ikona1);
 		but1.setBounds(10,80,100,100);
@@ -45,17 +49,17 @@ class Puzzle extends JFrame implements ActionListener{
 		but9  = new JButton(ikona9);
 		but9.setBounds(210,280,100,100);
 		but10  = new JButton(przyk);
-		but1.setBounds(380,100,200,200);
+		but10.setBounds(380,100,200,200);
 		
-		JLabel labelka = new JLabel("Przyk³ad: ");
+		JLabel labelka = new JLabel("PrzykÅ‚ad: ");
 		labelka.setBounds(330,200,70,20);
-		JLabel label2 = new JLabel("Kliknij aby przejœæ do kolejnego obrazka");
+		JLabel label2 = new JLabel("Kliknij aby przejÅ›Ä‡ do kolejnego obrazka");
 		label2.setBounds(380, 320, 200,20);
 		label2.setForeground(Color.black);
 		
 		but11 = new JButton(ikona0);
 		but11.setBounds(330,5,50,50);
-		but11 = but9.setIcon();
+		//but11 = but9.getIcon();
 		
 		add(but1);
 		add(but2);
@@ -85,7 +89,7 @@ class Puzzle extends JFrame implements ActionListener{
 		setLayout(null);
 		setSize(620,530);
 		setVisible(true);
-		setDefultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		}
 	public void actionPerformed(ActionEvent e)
 	{
@@ -114,7 +118,7 @@ class Puzzle extends JFrame implements ActionListener{
 			}
 			else if(but3.getIcon()== ikona)
 			{
-				but5.getIcon(i1);
+				but5.setIcon(i1);
 				but2.setIcon(ikona);
 			}
 			else if(but7.getIcon() == ikona)
@@ -128,7 +132,7 @@ class Puzzle extends JFrame implements ActionListener{
 	if(e.getSource() == but5)
 	{
 		Icon i1 = but5.getIcon();
-		if(but2.getIcon == ikona)
+		if(but2.getIcon() == ikona)
 		{
 			but2.setIcon(i1);
 			but5.setIcon(ikona);
@@ -176,7 +180,7 @@ class Puzzle extends JFrame implements ActionListener{
 			but5.setIcon(i1);
 			but8.setIcon(ikona);
 		}
-		else if(but9.getItem() == ikona)
+		else if(but9.getIcon() == ikona)
 			but9.setIcon(i1);
 			but8.setIcon(ikona);
 	}
@@ -190,8 +194,8 @@ class Puzzle extends JFrame implements ActionListener{
 		}
 	}
 
-	if(e.getSouce == but10){
-	Icon i1 = but10.getIcon()
+	if(e.getSource() == but10){
+	Icon i1 = but10.getIcon();
 	if(i1 == przyk)
 	{
 		but10.setIcon(przyk);
@@ -205,12 +209,16 @@ class Puzzle extends JFrame implements ActionListener{
 		but8.setIcon(ikona8);
 		but9.setIcon(ikona9);
 		ikona = but9.getIcon();
-		but11.setIcon()
+		but11.setIcon(przyk);
 	}
 }
-
- 	}
 }
+	public static void main(String Args[])
+	{
+	 new Puzz();	
+	}
+ }
+
 
 
 
